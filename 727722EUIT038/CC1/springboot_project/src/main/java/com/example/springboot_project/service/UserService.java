@@ -14,6 +14,7 @@ public class UserService {
     @Autowired
     UserRepo userRepo;
      
+    @SuppressWarnings("null")
     public User adduser(User user)
     {
         return userRepo.save(user);
@@ -29,7 +30,8 @@ public class UserService {
     }
     public User putuser(Long userId,User user)
 	{
-		User userAvail=userRepo.findById(userId).orElse(null);
+		@SuppressWarnings("null")
+        User userAvail=userRepo.findById(userId).orElse(null);
 		if(userAvail!=null)
         {
             userAvail.setEmail(user.getEmail());
@@ -40,6 +42,7 @@ public class UserService {
         else
         return null;
 	}
+    @SuppressWarnings("null")
     public String deleteuser(Long userId)
     {
         userRepo.deleteById(userId);
